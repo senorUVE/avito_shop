@@ -27,7 +27,7 @@ __КАК ЗАПУСТИТЬ?__
 
 1) Генерим ключи `go run cmd/keygen/main.go` и добавляем их в `.env`
 
-2) docker compose --build up -d
+2) docker compose up --build -d
 
 3) tests
 ```
