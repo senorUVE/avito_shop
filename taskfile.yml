@@ -1,0 +1,32 @@
+version: "3"
+
+dotenv: [".env"]
+
+tasks:
+  bin-deps:
+    cmds:
+      - GOBIN=$(pwd)/bin go install github.com/pressly/goose/v3/cmd/goose@latest
+
+  style:
+    cmds:
+      - go fmt ./...
+      - goimports -w .
+      - gofumpt -l -w .
+
+  build:
+    cmds:
+      - task: style
+      - go build -v -o bin/service cmd/service/main.go
+
+  run:
+    cmds:
+      - task: build
+      - ./bin/service
+
+  migration-up:
+    cmds:
+      - goose -dir db/migrations up
+
+  migration-down:
+    cmds:
+      - goose -dir db/migrations down
