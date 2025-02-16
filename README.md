@@ -29,6 +29,14 @@ __КАК ЗАПУСТИТЬ?__
 
 2) docker compose --build up -d
 
+3) 
+```
+go test -tags=integration -v ./internal/services/transaction/...
+go test -v ./internal/services/authentication/...
+go test -v ./internal/services/transaction/...
+go test -v ./internal/services/info/...
+```
+
 # Доп задания
 
 * Провести нагрузочное тестирование полученного решения и приложить результаты тестирования 
